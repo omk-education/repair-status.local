@@ -37,6 +37,16 @@ CREATE SCHEMA `repair-status` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 \q
 ```
 
+
+
+## Установка стандартной аутентификации
+
+```
+php artisan make:auth
+```
+
+
+
 ## Работа с БД
 
 1. **Model** - для работы с таблицей БД

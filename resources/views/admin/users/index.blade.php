@@ -30,16 +30,24 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->position }}</td>
-                                    <td>
+                                    <td class="text-right">
                                         {{-- Кнопки для действий --}}
-                                        <a class="btn btn-primary float-right"
+                                        <a class="btn btn-primary"
                                             href="{{ route('admin.users.edit', $item->id) }}">
                                             Редактировать
                                         </a>
-                                        <a class="btn btn-secondary float-right mr-1"
+                                        <a class="btn btn-secondary mr-1"
                                             href="{{ route('admin.users.show', $item->id) }}">
                                             Просмотреть
                                         </a>
+                                        <form action="{{ route('admin.users.destroy', $item->id) }}"
+                                                method="post" class="float-right">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger" type="submit">
+                                                Удалить
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

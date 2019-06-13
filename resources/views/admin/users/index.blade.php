@@ -32,6 +32,10 @@
                                     <td>{{ $item->position }}</td>
                                     <td>
                                         {{-- Кнопки для действий --}}
+                                        <a class="btn btn-primary float-right"
+                                            href="{{ route('admin.users.edit', $item->id) }}">
+                                            Редактировать
+                                        </a>
                                     </td>
                                 </tr>
                             @empty

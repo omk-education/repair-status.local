@@ -6,7 +6,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Пользователи
+                    <h3>
+                        Пользователи
+                        <a class="btn btn-success float-right"
+                            href="{{ route('admin.users.create') }}">
+                            Добавить
+                        </a>
+                    </h3>
                 </div>
                 <div class="card-body">
                     <table class="table">

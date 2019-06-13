@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -41,7 +41,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['password'] = bcrypt($request['password']);
+        User::create($request->all());
+
+        return redirect()->route('admin.users.index');
     }
 
     /**

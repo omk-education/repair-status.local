@@ -23,6 +23,7 @@ $groupDataAdmin = [
     'as' => 'admin.'
 ];
 Route::group($groupDataAdmin, function () {
+    Route::resource('orders', 'OrderController');
     Route::resource('users', 'UserController');
 });
 //<

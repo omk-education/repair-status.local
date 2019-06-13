@@ -36,6 +36,10 @@
                                             href="{{ route('admin.users.edit', $item->id) }}">
                                             Редактировать
                                         </a>
+                                        <a class="btn btn-secondary float-right mr-1"
+                                            href="{{ route('admin.users.show', $item->id) }}">
+                                            Просмотреть
+                                        </a>
                                     </td>
                                 </tr>
                             @empty

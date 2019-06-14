@@ -38,6 +38,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <form class="form-inline" action="{{ route('search') }}" method="POST">
+                            @csrf
+                            <input class="form-control mr-sm-2" type="search" name="number">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                Поиск
+                            </button>
+                        </form>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

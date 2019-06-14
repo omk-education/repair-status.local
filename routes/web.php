@@ -11,7 +11,8 @@
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', 'IndexController@index');
+Route::post('/search', 'IndexController@search')->name('search');
 
 Auth::routes(['register' => false]);
 

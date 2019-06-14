@@ -18,7 +18,9 @@ class IndexController extends Controller
         //441134
         $number = $request->number;
         $item = Order::where('number', $number)->first();
-        $master = User::where('id', $item->master)->first();
+        if (isset($item)) {
+            $master = User::where('id', $item->master)->first();
+        }
 
         return view('result', compact('item', 'master'));
     }

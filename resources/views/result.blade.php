@@ -11,6 +11,7 @@
                     </h3>
                 </div>
                 <div class="card-body">
+                    @isset($item)
                     <table class="table table-hover table-bordered">
                         <tbody>
                             <tr>
@@ -39,6 +40,12 @@
                             </tr>
                         </tbody>
                     </table>
+                    @endisset
+                    @unless($item)
+                        <p>Неверный номер заказа</p>
+                    @endunless
+
+
                 </div>
             </div>
         </div>

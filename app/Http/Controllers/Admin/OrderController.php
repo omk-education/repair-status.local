@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +18,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $items = Order::all();
+        if (Gate::allows('master')) {
+            $items = Order::where([
+                ['master', Auth::id()],
+                ['status', '<>', 'Ремонт закрыт']
+            ])->get();
+        } else {
+            $items = Order::all();
+        }
 
         return view('admin.orders.index', compact('items'));
     }

@@ -39,6 +39,7 @@ $factory->state(User::class, 'admin', [
  * Состояние для учетной записи продавца-консультанта
  */
 $factory->state(User::class, 'seller', [
+      'email' => 'seller@test.ru',
       'role' => 'seller',
 ]);
 
@@ -46,5 +47,6 @@ $factory->state(User::class, 'seller', [
  * Состояние для учетной записи мастера
  */
 $factory->state(User::class, 'master', [
+      'email' => 'master@test.ru',
       'role' => 'master',
 ]);

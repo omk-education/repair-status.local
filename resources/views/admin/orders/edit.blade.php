@@ -12,10 +12,12 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.orders.update', $item->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                        <fieldset {{ ($item->status == 'Ремонт закрыт') ? "disabled" : ""}}>
+                            @csrf
+                            @method('PUT')
 
-                        @include('admin.orders.partials.form')
+                            @include('admin.orders.partials.form')
+                        </fieldset>
                     </form>
                 </div>
             </div>

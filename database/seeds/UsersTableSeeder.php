@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(User::class, 1)->states('admin')->create();
-        factory(User::class, 2)->states('seller')->create();
-        factory(User::class, 2)->states('master')->create();
+        factory(User::class, 1)->states('seller')->create();
+        factory(User::class, 1)->states('master')->create();
     }
 }

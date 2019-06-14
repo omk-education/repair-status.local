@@ -40,6 +40,7 @@
                                             href="{{ route('admin.orders.show', $item->id) }}">
                                             Просмотреть
                                         </a>
+                                        @can('admin')
                                         <form action="{{ route('admin.orders.destroy', $item->id) }}"
                                                 method="post" class="float-right">
                                             @csrf
@@ -48,6 +49,7 @@
                                                 Удалить
                                             </button>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty

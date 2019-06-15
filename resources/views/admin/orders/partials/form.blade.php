@@ -3,35 +3,48 @@
     <input type="text" id="number"
             class="form-control @error('number') is-invalid @enderror"
             name="number" value="{{ $item->number ?? old('number') }}"
-            {{ isset($item) ? "disabled" : "" }}>
+            {{ isset($item) ? "readonly" : "" }}>
+            @error('number')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
 </div>
 <div class="form-group">
     <label for="description">Описание заказа</label>
     <textarea class="form-control @error('description') is-invalid @enderror"
                 id="description" name="description"
-                rows="3" {{ isset($item) ? "disabled" : "" }}
+                rows="3" {{ isset($item) ? "readonly" : "" }}
                 >{{ $item->description ?? old('description') }}</textarea>
+            @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 </div>
 <div class="form-group">
     <label for="diagnostics ">Результат диагностики оборудования</label>
     <textarea class="form-control @error('diagnostics ') is-invalid @enderror"
                 id="diagnostics " name="diagnostics "
-                rows="3" {{ ($item->status == 'Ремонт завершен') ? "disabled" : ""}}
+                rows="3" {{ (isset($item) && $item->status == 'Ремонт завершен') ? "readonly" : ""}}
                 >{{ $item->diagnostics  ?? old('diagnostics ') }}</textarea>
+            @error('diagnostics')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 </div>
 <div class="form-group">
     <label for="notice">Примечание</label>
     <textarea class="form-control @error('notice') is-invalid @enderror"
                 id="notice" name="notice"
-                rows="3" {{ ($item->status == 'Ремонт завершен') ? "disabled" : ""}}
+                rows="3" {{ (isset($item) && $item->status == 'Ремонт завершен') ? "readonly" : ""}}
                 >{{ $item->notice ?? old('notice') }}</textarea>
+            @error('notice')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 </div>
 
 <div class="form-group">
     <label for="master">Мастер</label>
     <select id="master" name="master"
             class="form-control @error('master') is-invalid @enderror"
-            {{ ($item->status == 'Ремонт завершен') ? "disabled" : ""}}
+            {{ ( isset($item) && $item->status == 'Ремонт завершен') ? "readonly" : ""}}
             >
         @forelse($masters as $master)
             <option value="{{ $master->id }}"
@@ -41,6 +54,9 @@
         @empty
         @endforelse
     </select>
+    @error('master')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
 </div>
 
 <div class="form-group">
@@ -64,5 +80,8 @@
             Ремонт закрыт
         </option>
     </select>
+    @error('status')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
 </div>
 <button type="submit" class="btn btn-primary">Сохранить</button>

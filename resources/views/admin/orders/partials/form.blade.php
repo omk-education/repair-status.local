@@ -19,12 +19,13 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
 </div>
+{{-- {{ dd($item->diagnostics  ?? old('diagnostics')) }} --}}
 <div class="form-group">
-    <label for="diagnostics ">Результат диагностики оборудования</label>
-    <textarea class="form-control @error('diagnostics ') is-invalid @enderror"
-                id="diagnostics " name="diagnostics "
+    <label for="diagnostics">Результат диагностики оборудования</label>
+    <textarea class="form-control @error('diagnostics') is-invalid @enderror"
+                id="diagnostics" name="diagnostics"
                 rows="3" {{ (isset($item) && $item->status == 'Ремонт завершен') ? "readonly" : ""}}
-                >{{ $item->diagnostics  ?? old('diagnostics ') }}</textarea>
+                >{{ $item->diagnostics  ?? old('diagnostics') }}</textarea>
             @error('diagnostics')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
